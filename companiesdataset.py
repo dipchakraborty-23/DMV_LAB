@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import plotly.express as px
 
-# Read the CSV file
+
 df = pd.read_csv('D:\Dip_DMV_LAB\company_dataset.csv')
 
-# Clean the data
+
 df['name'] = df['name'].str.strip()
 df['ratings'] = pd.to_numeric(df['ratings'], errors='coerce')
 df['review_count'] = df['review_count'].str.replace('(', '').str.replace(')', '').str.replace('k Reviews', '').str.strip()
@@ -15,7 +15,7 @@ df['review_count'] = pd.to_numeric(df['review_count'], errors='coerce')
 df['years'] = df['years'].str.replace(' years old', '').str.strip()
 df['years'] = pd.to_numeric(df['years'], errors='coerce')
 
-# Extract main headquarters (first location)
+
 df['main_hq'] = df['hq'].str.split('+').str[0].str.strip()
 
 print("="*80)
@@ -25,7 +25,7 @@ top_10_hq = df.head(10)[['name', 'main_hq']]
 for idx, row in top_10_hq.iterrows():
     print(f"{idx+1}. {row['name']}: {row['main_hq']}")
 
-# TASK 2: Bar Chart - Company Rating wise (Top 10)
+
 print("\n" + "="*80)
 print("TASK 2: BAR CHART - TOP 10 COMPANIES BY RATING")
 print("="*80)
@@ -44,7 +44,7 @@ plt.savefig('task2_bar_chart_ratings.png', dpi=300, bbox_inches='tight')
 plt.show()
 print("✓ Bar chart saved as 'task2_bar_chart_ratings.png'")
 
-# TASK 3: Funnel Chart - Companies Review wise (Top 10)
+
 print("\n" + "="*80)
 print("TASK 3: FUNNEL CHART - TOP 10 COMPANIES BY REVIEW COUNT")
 print("="*80)
@@ -71,7 +71,7 @@ fig.write_html('task3_funnel_chart_reviews.html')
 fig.show()
 print("✓ Funnel chart saved as 'task3_funnel_chart_reviews.html'")
 
-# TASK 4: Line Chart - Company Count wise (Top 10)
+
 print("\n" + "="*80)
 print("TASK 4: LINE CHART - TOP 10 COMPANIES BY COUNT/INDEX")
 print("="*80)
@@ -91,7 +91,7 @@ plt.savefig('task4_line_chart_count.png', dpi=300, bbox_inches='tight')
 plt.show()
 print("✓ Line chart saved as 'task4_line_chart_count.png'")
 
-# TASK 5: Pie Chart - Top 5 Companies by Years
+
 print("\n" + "="*80)
 print("TASK 5: PIE CHART - TOP 5 COMPANIES BY AGE (YEARS)")
 print("="*80)
@@ -112,7 +112,7 @@ plt.savefig('task5_pie_chart_years.png', dpi=300, bbox_inches='tight')
 plt.show()
 print("✓ Pie chart saved as 'task5_pie_chart_years.png'")
 
-# Display summary statistics
+
 print("\n" + "="*80)
 print("SUMMARY STATISTICS")
 print("="*80)
